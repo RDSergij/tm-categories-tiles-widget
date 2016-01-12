@@ -1,0 +1,54 @@
+/*
+* @section Widget form
+*/
+.tm-categories-tiles-form-widget {
+	
+	clear: both;
+	width: 100%;
+	margin-bottom: 10px;
+
+	.show-count {
+		margin: 10px 0 10px 0;
+		display: block;
+		height: 30px;
+		> label {
+			float: left;
+			margin: 3px 20px 0 0;
+		}
+	}
+
+	.category-area {
+		border: #dfdfdf dashed 1px;
+		padding: 5px;
+		margin-bottom: 5px;
+		background-color: white;
+	}
+
+	.upload_image_button {
+		background-color: #0073aa;
+	}
+
+	.button-image {
+		width: 48%;
+		display: inline;
+		cursor: pointer;
+		color: #FFF;
+	}
+
+	.delete_image_url {
+		background-color: #d54e21;
+	}
+
+	.avatar {
+		text-align: center;
+		img {
+			width: 128px;
+		}
+	}
+}
+
+.wp-customizer {
+	#TB_overlay, #TB_window {
+		z-index: 999999;
+	}
+} 

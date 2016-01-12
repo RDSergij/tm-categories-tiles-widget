@@ -1,0 +1,16 @@
+/*
+* @section Widget form
+*/
+.tm-categories-tiles-form-widget { clear: both; width: 100%; margin-bottom: 10px; }
+.tm-categories-tiles-form-widget .show-count { margin: 10px 0 10px 0; display: block; height: 30px; }
+.tm-categories-tiles-form-widget .show-count > label { float: left; margin: 3px 20px 0 0; }
+.tm-categories-tiles-form-widget .category-area { border: #dfdfdf dashed 1px; padding: 5px; margin-bottom: 5px; background-color: white; }
+.tm-categories-tiles-form-widget .upload_image_button { background-color: #0073aa; }
+.tm-categories-tiles-form-widget .button-image { width: 48%; display: inline; cursor: pointer; color: #FFF; }
+.tm-categories-tiles-form-widget .delete_image_url { background-color: #d54e21; }
+.tm-categories-tiles-form-widget .avatar { text-align: center; }
+.tm-categories-tiles-form-widget .avatar img { width: 128px; }
+
+.wp-customizer #TB_overlay, .wp-customizer #TB_window { z-index: 999999; }
+
+/*# sourceMappingURL=admin.min.css.map */
