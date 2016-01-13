@@ -63,6 +63,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 				'title'			=> __( 'About me', PHOTOLAB_BASE_TM_ALIAS ),
 				'theme'			=> 0,
 				'show_count'	=> 'false',
+				'sort_is'		=> '1',
 				'categories'	=> array( 0 => array( 'category' => 1, 'image' => '' ) ),
 			);
 
@@ -154,6 +155,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 							array(
 									'id'            => $this->get_field_id( 'title' ),
 									'type'          => 'text',
+									'class'			=> 'title',
 									'name'          => $this->get_field_name( 'title' ),
 									'placeholder'   => __( 'New title', PHOTOLAB_BASE_TM_ALIAS ),
 									'value'         => $title,
@@ -161,6 +163,17 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 							)
 					);
 			$title_html = $title_field->render();
+
+			$sort_is_field = new UI_Text(
+							array(
+									'id'            => $this->get_field_id( 'sort_is' ),
+									'class'			=> 'sort-is',
+									'type'          => 'text',
+									'name'          => $this->get_field_name( 'sort_is' ),
+									'value'         => $sort_is,
+							)
+					);
+			$sort_is_html = $sort_is_field->render();
 
 			$theme_field = new UI_Select(
 						array(
@@ -265,6 +278,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$instance['title'] = ! empty( $new_instance['title'] ) ? $new_instance['title'] : $this->instance_default['title'];
 			$instance['theme'] = ( ! empty( $new_instance['theme'] ) || 0 == $new_instance['theme'] ) ? $new_instance['theme'] : $this->instance_default['theme'];
 			$instance['show_count'] = ! empty( $new_instance['show_count'] ) ? $new_instance['show_count'] : $this->instance_default['show_count'];
+			$instance['sort_is'] = ! empty( $new_instance['sort_is'] ) ? $new_instance['sort_is'] : $this->instance_default['sort_is'];
 
 			foreach ( $new_instance['category'] as $key => $category ) {
 				$instance['categories'][] = array ( 'category' => $category, 'image' => $new_instance['image'][ $key ] );

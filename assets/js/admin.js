@@ -12,9 +12,21 @@ jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
 function initWidget() {
 	window.CHERRY_API.ui_elements.switcher.init( jQuery( 'body' ) );
 	jQuery( ".sortable" ).sortable({
-		sort: function( event, ui ) { console.log( jQuery( this ).parents( '.tm-categories-tiles-form-widget' ) ); jQuery( this ).parents( '.tm-categories-tiles-form-widget' ).find( 'input' ).trigger( 'change' ); }
+		//update: function( event, ui ) {
+		//}
 	});
-	jQuery( ".sortable" ).disableSelection();
+	jQuery( ".sortable" ).on( "sortchange", function( event, ui ) {
+		el = ui.item.parents( '.tm-categories-tiles-form-widget' ).find( 'input.sort-is' );
+		el.val( (new Date).getTime() ).focus().trigger( { type : 'keydown', which : 13 } );
+				el.trigger( 'change' );
+		refresh_form = function( el ) {
+				el.val( (new Date).getTime() ).focus().trigger( { type : 'keydown', which : 13 } );
+				el.trigger( 'change' );
+				console.log('test');
+			}
+		
+		setTimeout( refresh_form(el) , 2000)
+	 } );
 
 	jQuery( '.show-count' ).click( function() {
 		jQuery( this ).find( 'input' ).trigger( 'change' );

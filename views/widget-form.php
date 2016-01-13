@@ -26,6 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 		<label><?php _e( 'Show posts', PHOTOLAB_BASE_TM_ALIAS ) ?></label>
 		<?php echo $show_count_html ?>
 	</div>
+	<?php echo $sort_is_html ?>
 
 	<div class="sortable">
 		<?php for ( $i = 0; $i < 6; $i++ ) : ?>
