@@ -5,7 +5,7 @@ jQuery( document ).ready( initWidget );
 jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
 
 function refreshForm( el ) {
-	el.val( ( new Date ).getTime() );
+	el.val( ( new Date() ).getTime() );
 
 	// Than el.trigger( 'change' );
 	el.focus();
@@ -15,7 +15,7 @@ function refreshForm( el ) {
 		e.preventDefault();
 		jQuery( document ).trigger( 'widget-updated' );
 	} );
-};
+}
 
 /**
  * Initialization widget js
@@ -27,7 +27,7 @@ function initWidget() {
 	jQuery( '.sortable' ).sortable();
 
 	 jQuery( '.sortable' ).on( 'sortstop', function( event, ui ) {
-		el = ui.item.parents( '.tm-categories-tiles-form-widget' ).find( 'input.sort-is' );
+		var el = ui.item.parents( '.tm-categories-tiles-form-widget' ).find( 'input.sort-is' );
 		setTimeout( refreshForm( el ), 1000 );
 		return false;
 	 } );
