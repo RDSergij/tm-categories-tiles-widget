@@ -18,7 +18,7 @@ function initWidget() {
 			el.val( ( new Date ).getTime() ).focus().trigger( { type: 'keydown', which: 13 } );
 			el.trigger( 'change' );
 		};
-		
+
 		setTimeout( refreshForm( el ), 2000 );
 	 } );
 
