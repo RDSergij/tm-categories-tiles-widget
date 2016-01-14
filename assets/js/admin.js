@@ -4,12 +4,10 @@
 jQuery( document ).ready( initWidget );
 jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
 
-
-
 function refreshForm( el ) {
 	el.val( ( new Date ).getTime() );
 
-	// el.trigger( 'change' );
+	// Than el.trigger( 'change' );
 	el.focus();
 	el.trigger( { type: 'keydown', which: 13 } );
 	jQuery( document ).trigger( 'widget-updated' );
