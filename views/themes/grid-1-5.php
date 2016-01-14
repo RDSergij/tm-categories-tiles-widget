@@ -17,37 +17,37 @@ if ( ! defined( 'WPINC' ) ) {
 		<div class="cell-big" style="background: url(<?php echo $categories[0]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[0]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[0]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[0]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="cell-small" style="background: url(<?php echo $categories[1]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[1]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[1]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[1]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="cell-small" style="background: url(<?php echo $categories[2]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[2]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[2]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[2]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="cell-small" style="background: url(<?php echo $categories[3]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[3]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[3]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[3]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="cell-small" style="background: url(<?php echo $categories[4]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[4]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[4]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[4]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="cell-small" style="background: url(<?php echo $categories[5]['image'] ?>) no-repeat;">
 			<div class="title"><?php echo $categories[5]['name'] ?></div>
 			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[5]['count']); ?></div>
+			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[5]['count'] ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>

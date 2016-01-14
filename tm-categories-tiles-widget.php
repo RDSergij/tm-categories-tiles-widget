@@ -141,7 +141,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 
 			// Custom script
 			wp_register_script( 'tm-categories-tiles-admin', plugins_url( 'assets/js/', __FILE__ ) . 'admin.min.js', array( 'jquery' ) );
-			//wp_localize_script( 'tm-categories-tiles-admin', 'TMAboutAuthorWidgetParam', array( 'image' => $this->get_field_id( 'image' ), 'avatar' => $this->get_field_id( 'avatar' ) ) );
+
 			wp_enqueue_script( 'tm-categories-tiles-admin' );
 
 			wp_enqueue_style( 'thickbox' );
@@ -281,7 +281,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$instance['sort_is'] = ! empty( $new_instance['sort_is'] ) ? $new_instance['sort_is'] : $this->instance_default['sort_is'];
 
 			foreach ( $new_instance['category'] as $key => $category ) {
-				$instance['categories'][] = array ( 'category' => $category, 'image' => $new_instance['image'][ $key ] );
+				$instance['categories'][] = array( 'category' => $category, 'image' => $new_instance['image'][ $key ] );
 			}
 
 			return $instance;

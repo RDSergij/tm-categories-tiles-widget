@@ -11,21 +11,15 @@ jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
  */
 function initWidget() {
 	window.CHERRY_API.ui_elements.switcher.init( jQuery( 'body' ) );
-	jQuery( ".sortable" ).sortable({
-		//update: function( event, ui ) {
-		//}
-	});
-	jQuery( ".sortable" ).on( "sortchange", function( event, ui ) {
+	jQuery( '.sortable' ).sortable();
+	jQuery( '.sortable' ).on( 'sortchange', function( event, ui ) {
 		el = ui.item.parents( '.tm-categories-tiles-form-widget' ).find( 'input.sort-is' );
-		el.val( (new Date).getTime() ).focus().trigger( { type : 'keydown', which : 13 } );
-				el.trigger( 'change' );
-		refresh_form = function( el ) {
-				el.val( (new Date).getTime() ).focus().trigger( { type : 'keydown', which : 13 } );
-				el.trigger( 'change' );
-				console.log('test');
-			}
+		refreshForm = function( el ) {
+			el.val( ( new Date ).getTime() ).focus().trigger( { type: 'keydown', which: 13 } );
+			el.trigger( 'change' );
+		}
 		
-		setTimeout( refresh_form(el) , 2000)
+		setTimeout( refreshForm( el ) , 2000 )
 	 } );
 
 	jQuery( '.show-count' ).click( function() {
