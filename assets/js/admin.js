@@ -17,9 +17,9 @@ function initWidget() {
 		refreshForm = function( el ) {
 			el.val( ( new Date ).getTime() ).focus().trigger( { type: 'keydown', which: 13 } );
 			el.trigger( 'change' );
-		}
+		};
 		
-		setTimeout( refreshForm( el ) , 2000 )
+		setTimeout( refreshForm( el ), 2000 );
 	 } );
 
 	jQuery( '.show-count' ).click( function() {
