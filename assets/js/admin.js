@@ -60,7 +60,7 @@ function initWidget() {
 	});
 
 	// Delete category
-	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function( e ) {
+	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function() {
 		var _this = jQuery( this );
 		var category = _this.parents( '.category-area' );
 		category.find( 'input' ).trigger( 'change' );
@@ -69,7 +69,7 @@ function initWidget() {
 	});
 
 	// Add category
-	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
+	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function() {
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
 		var categoriesCount = parseInt( categories.attr( 'count' ), 10 ) + 1;
