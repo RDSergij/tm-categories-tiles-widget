@@ -11,14 +11,14 @@
  */
 
 if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
-	
+
 	/**
 	 * UI-switcher.
 	 */
 	class UI_Switcher_Fox {
 
 		/**
-		 * default settings
+		 * Default settings
 		 *
 		 * @var type array
 		 */
@@ -31,7 +31,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 		);
 
 		/**
-		 * required settings
+		 * Required settings
 		 *
 		 * @var type array
 		 */
@@ -40,7 +40,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 		);
 
 		/**
-		 * settings
+		 * Settings
 		 *
 		 * @var type array
 		 */
@@ -69,7 +69,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 		 * Add styles
 		 */
 		private function assets() {
-			$url = plugins_url( 'fox-ui-elements/assets/css/switcher.min.css', dirname(__FILE__) );
+			$url = plugins_url( 'fox-ui-elements/assets/css/switcher.min.css', dirname( __FILE__ ) );
 			wp_enqueue_style( 'switcher-fox', $url, array(), '0.1.0', 'all' );
 		}
 
@@ -97,7 +97,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 			unset( $this->settings['values'], $this->settings['name'], $this->settings['default'] );
 			$attributes = '';
 			foreach ( $this->settings as $key => $value ) {
-				$attributes.= ' ' . $key . '="' . $value . '"';
+				$attributes .= ' ' . $key . '="' . $value . '"';
 			}
 
 			ob_start();

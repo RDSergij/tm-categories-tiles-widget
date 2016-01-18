@@ -123,16 +123,6 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 
 			wp_enqueue_media();
 
-			// Ui cherri api
-			wp_register_script( 'tm-categories-tiles-script-api', plugins_url( 'assets/js/cherry-api.js', __FILE__ ), array( 'jquery' ) );
-			wp_localize_script( 'tm-categories-tiles-script-api', 'cherry_ajax', wp_create_nonce( 'cherry_ajax_nonce' ) );
-			wp_localize_script( 'tm-categories-tiles-script-api', 'wp_load_style', null );
-			wp_localize_script( 'tm-categories-tiles-script-api', 'wp_load_script', null );
-			wp_enqueue_script( 'tm-categories-tiles-script-api' );
-
-			// Sortable
-			wp_register_script( 'jquery-ui-sortable', plugins_url( 'assets/js/jquery-ui-sortable.min.js', __FILE__ ), array( 'jquery' ) );
-
 			// Media uploader
 			wp_enqueue_script( 'media-upload' );
 			wp_enqueue_script( 'thickbox' );

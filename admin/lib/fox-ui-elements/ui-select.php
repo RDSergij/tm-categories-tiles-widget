@@ -18,39 +18,39 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 	class UI_Select_Fox {
 
 		/**
-		* default settings
-		*
-		* @var type array
-		*/
+		 * Default settings
+		 *
+		 * @var type array
+		 */
 		private $default_settings = array(
 			'id'        => 'select-fox',
 			'class'     => '',
 			'name'      => 'select-fox',
-			'options'   => array( 'true' => 'On', 'false'=> 'Off' ),
+			'options'   => array( 'true' => 'On', 'false' => 'Off' ),
 			'default'   => 'true',
 		);
 
 		/**
-		* required settings
-		*
-		* @var type array
-		*/
+		 * Required settings
+		 *
+		 * @var type array
+		 */
 		private $required_settings = array(
 			'class'     => 'select-fox'
 		);
 
 		/**
-		* settings
-		*
-		* @var type array
-		*/
+		 * Settings
+		 *
+		 * @var type array
+		 */
 		public $settings;
 
 		/**
-		* Init base settings
-		*
-		* @param type $attr
-		*/
+		 * Init base settings
+		 *
+		 * @param type $attr
+		 */
 		public function __construct( $attr = null ) {
 			if ( empty( $attr ) || ! is_array( $attr ) ) {
 				$attr = $this->default_settings;
@@ -66,8 +66,8 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 		}
 
 		/**
-		* Add styles
-		*/
+		 * Add styles
+		 */
 		private function assets() {
 			$url = plugins_url( 'fox-ui-elements/assets/css/select.min.css', dirname(__FILE__) );
 			wp_enqueue_style( 'select-fox', $url, array(), '0.1.0', 'all' );
@@ -76,10 +76,10 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 		
 
 		/**
-		* Render html
-		*
-		* @return string
-		*/
+		 * Render html
+		 *
+		 * @return string
+		 */
 		public function output() {
 			$this->assets();
 			foreach ( $this->required_settings as $key => $value ) {

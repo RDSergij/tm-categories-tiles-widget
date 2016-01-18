@@ -18,7 +18,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 	class UI_Input_Fox {
 
 		/**
-		 * default settings
+		 * Default settings
 		 *
 		 * @var type array
 		 */
@@ -32,16 +32,16 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		);
 
 		/**
-		 * required settings
+		 * Required settings
 		 *
 		 * @var type array
 		 */
 		private $required_settings = array(
-			'class'				=> 'input-fox'
+			'class'				=> 'input-fox',
 		);
 
 		/**
-		 * settings
+		 * Settings
 		 *
 		 * @var type array
 		 */
@@ -50,19 +50,19 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		/**
 		 * Init base settings
 		 *
-		 * @param type $attr
+		 * @param type $attr.
 		 */
 		public function __construct( $attr = null ) {
 			if ( empty( $attr ) || ! is_array( $attr ) ) {
 				$attr = $this->default_settings;
 			} else {
-				foreach( $this->default_settings as $key => $value ) {
+				foreach ( $this->default_settings as $key => $value ) {
 					if ( empty( $attr[ $key ] ) ) {
 						$attr[ $key ] = $this->default_settings[ $key ];
 					}
 				}
 			}
-			
+
 			$this->settings = $attr;
 		}
 
@@ -70,7 +70,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 * Add styles
 		 */
 		private function assets() {
-			$url = plugins_url( 'fox-ui-elements/assets/css/input.min.css', dirname(__FILE__) );
+			$url = plugins_url( 'fox-ui-elements/assets/css/input.min.css', dirname( __FILE__ ) );
 			wp_enqueue_style( 'input-fox', $url, array(), '0.1.0', 'all' );
 		}
 
@@ -91,7 +91,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 			}
 			$attributes = '';
 			foreach ( $this->settings as $key => $value ) {
-				$attributes.= ' ' . $key . '="' . $value . '"';
+				$attributes .= ' ' . $key . '="' . $value . '"';
 			}
 
 			ob_start();

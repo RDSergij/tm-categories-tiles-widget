@@ -61,16 +61,15 @@ function initWidget() {
 
 	// Delete category
 	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function( e ) {
-		e.preventDefault();
 		var _this = jQuery( this );
 		var category = _this.parents( '.category-area' );
 		category.remove();
+		e.preventDefault();
 		return false;
 	});
 
 	// Add category
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
-		e.preventDefault();
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
 		var categoriesCount = parseInt( categories.attr( 'count' ) ) + 1;
@@ -81,6 +80,7 @@ function initWidget() {
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		reInitWidget();
 		jQuery( document ).trigger( 'widget-change' );
+		e.preventDefault();
 		return false;
 	});
 }
