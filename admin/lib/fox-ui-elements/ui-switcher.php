@@ -26,7 +26,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 			'id'        => 'switcher-fox',
 			'class'     => '',
 			'name'      => 'switcher-fox',
-			'values'    => array( 'true' => 'On', 'false'=> 'Off' ),
+			'values'    => array( 'true' => 'On', 'false' => 'Off' ),
 			'default'    => 'true',
 		);
 
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 		 * @var type array
 		 */
 		private $required_settings = array(
-			'class'        => 'switcher-fox'
+			'class'        => 'switcher-fox',
 		);
 
 		/**
@@ -48,20 +48,18 @@ if ( ! class_exists( 'UI_Switcher_Fox' ) ) {
 
 		/**
 		 * Init base settings
-		 *
-		 * @param type $attr
 		 */
 		public function __construct( $attr = null ) {
 			if ( empty( $attr ) || ! is_array( $attr ) ) {
 				$attr = $this->default_settings;
 			} else {
-				foreach( $this->default_settings as $key => $value ) {
+				foreach ( $this->default_settings as $key => $value ) {
 					if ( empty( $attr[ $key ] ) ) {
 						$attr[ $key ] = $this->default_settings[ $key ];
 					}
 				}
 			}
-			
+
 			$this->settings = $attr;
 		}
 

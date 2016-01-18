@@ -1,6 +1,6 @@
 <?php
 /**
- * Description: Fox ui-elements
+ * Description:  Fox ui-elements
  * Version: 0.1.0
  * Author: Osadchyi Serhii
  * Author URI: https://github.com/RDSergij
