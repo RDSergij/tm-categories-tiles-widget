@@ -26,33 +26,35 @@ if ( ! defined( 'WPINC' ) ) {
 		<label><?php _e( 'Show posts', PHOTOLAB_BASE_TM_ALIAS ) ?></label>
 		<?php echo $show_count_html ?>
 	</div>
-	<?php echo $sort_is_html ?>
 
-	<div class="sortable">
-		<?php for ( $i = 0; $i < 6; $i++ ) : ?>
+	<div class="categories" count="<?php echo count( $tiles_items ) ?>">
+		<?php if ( is_array( $tiles_items ) && count( $tiles_items ) >0 ) : ?>
+		<?php foreach( $tiles_items as $key => $tile_item) : ?>
 		<div class="category-area">
-			<h3><?php printf( __( 'Category %d ', PHOTOLAB_BASE_TM_ALIAS ), $i + 1 ); ?></h3>
+			<i class="fa fa-times delete-category"></i>
+			<h3><?php echo __( 'Category', PHOTOLAB_BASE_TM_ALIAS ) ?> <span><?php echo $key + 1 ?></span></h3>
 			<p>
-				<?php echo $category_{$i . '_html'} ?>
+				<?php echo $tile_item['category'] ?>
 			</p>
 
 			<p>
 				<label><?php _e( 'Category image', PHOTOLAB_BASE_TM_ALIAS ) ?></label><br/>
-				<?php echo $upload_html ?>
-				<?php echo $delete_image_html ?>
-				<?php echo $image_{$i . '_html'} ?>
+				<?php echo $tile_item['image'] ?>
 			</p>
 
-			<p class="avatar">
-				<?php if ( ! empty( $displayed_images[ $i ] ) ) : ?>
-				<?php $src = $displayed_images[ $i ]; ?>
+			<div class="upload-image">
+				<i class="fa fa-times delete-image-url"></i>
+				<?php if ( ! empty( $tile_item['src'] ) ) : ?>
+				<?php $src = $tile_item['src']; ?>
 				<?php else : ?>
 				<?php $src = $default_image; ?>
 				<?php endif; ?>
 				<img default_image="<?php echo $default_image ?>" src="<?php echo $src ?>">
-			</p>
+			</div>
 		</div>
-		<?php endfor; ?>
+		<?php endforeach; ?>
+		<?php endif; ?>
+		<i class="add-category fa fa-plus-square"> add category</i>
 	</div>
 
 	<p>&nbsp;</p>

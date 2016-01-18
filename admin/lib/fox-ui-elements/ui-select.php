@@ -1,0 +1,63 @@
+<?php
+/**
+ * Switcher class
+ */
+
+if ( ! class_exists( 'ui_select_fox' ) ) {
+	class ui_select_fox {
+		private $default_settings = array(
+			'id'        => 'select-fox',
+			'class'     => '',
+			'name'      => 'select-fox',
+			'options'   => array( 'true' => 'On', 'false'=> 'Off' ),
+			'default'   => 'true',
+		);
+		private $required_settings = array(
+			'class'     => 'select-fox'
+		);
+		public $settings;
+
+		public function __construct( $attr = null ) {
+			if ( empty( $attr ) || ! is_array( $attr ) ) {
+				$attr = $this->default_settings;
+			} else {
+				foreach( $this->default_settings as $key => $value ) {
+					if ( empty( $attr[ $key ] ) ) {
+						$attr[ $key ] = $this->default_settings[ $key ];
+					}
+				}
+			}
+			
+			$this->settings = $attr;
+		}
+
+		private function assets() {
+			$url = plugins_url( 'fox-ui-elements/assets/css/select.min.css', dirname(__FILE__) );
+			wp_enqueue_style( 'select-fox', $url, array(), '0.1.0', 'all' );
+		}
+
+		public function output() {
+			$this->assets();
+			foreach ( $this->required_settings as $key => $value ) {
+				$this->settings[ $key ] = empty( $this->settings[ $key ] ) ? $value : $this->settings[ $key ] . ' ' . $value;
+			}
+
+			$options = $this->settings['options'];
+			unset( $this->settings['options'] );
+			$attributes = '';
+			if ( empty( $this->settings['default'] ) ) {
+				$default_array = '';
+			} else {
+				$default = $this->settings['default'];
+				unset( $this->settings['default'] );
+			}
+			foreach ( $this->settings as $key => $value ) {
+				$attributes.= ' ' . $key . '="' . $value . '"';
+			}
+
+			ob_start();
+			require( 'views/select.php' );
+			return ob_get_clean();
+		}
+	}
+}

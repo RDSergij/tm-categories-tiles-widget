@@ -1,68 +1,87 @@
 /**
  * Events list
  */
-jQuery( document ).ready( initWidget );
+//jQuery( document ).ready( initWidget );
 jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
 
-function refreshForm( el ) {
-	el.val( ( new Date() ).getTime() );
-
-	// Than el.trigger( 'change' );
-	el.focus();
-	el.trigger( { type: 'keydown', which: 13 } );
-	jQuery( document ).trigger( 'widget-updated' );
-	el.change( function( e ) {
-		e.preventDefault();
-		jQuery( document ).trigger( 'widget-updated' );
-	} );
+/**
+ * ReInit widget
+ * @returns {undefined}
+ */
+function reInitWidget() {
+	jQuery( '.tm-categories-tiles-form-widget select, .tm-categories-tiles-form-widget input[type=text]' ).off( 'change' );
+	jQuery( '.tm-categories-tiles-form-widget div.upload-image img' ).off( 'click' );
+	jQuery( '.tm-categories-tiles-form-widget .upload-image .delete-image-url' ).off( 'click' );
+	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).off( 'click' );
+	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).off( 'click' );
+	initWidget();
 }
-
 /**
  * Initialization widget js
  *
  * @returns {undefined}
  */
 function initWidget() {
-	window.CHERRY_API.ui_elements.switcher.init( jQuery( 'body' ) );
-	jQuery( '.sortable' ).sortable();
 
-	 jQuery( '.sortable' ).on( 'sortstop', function( event, ui ) {
-		var el = ui.item.parents( '.tm-categories-tiles-form-widget' ).find( 'input.sort-is' );
-		setTimeout( refreshForm( el ), 1000 );
-		return false;
-	 } );
-
-	jQuery( '.show-count' ).click( function() {
-		jQuery( this ).find( 'input' ).trigger( 'change' );
+	jQuery( '.tm-categories-tiles-form-widget select, .tm-categories-tiles-form-widget input[type=text]' ).change( function() {
+		jQuery( document ).trigger('widget-change');
 	});
 
 	// Upload image
-	jQuery( '.upload_image_button' ).click( function() {
+	jQuery( '.tm-categories-tiles-form-widget div.upload-image img' ).click( function( e ) {
+		e.preventDefault();
 		var _this = jQuery( this );
 		var inputImage = _this.parents( '.category-area' ).find( '.custom-image-url' );
-		var inputAvatar = _this.parents( '.category-area' ).find( '.avatar img' );
+		var inputAvatar = _this.parents( '.category-area' ).find( '.upload-image img' );
+		var customUploader = wp.media( {
+			title: 'Upload a Image',
+			button: {
+				text: 'Select'
+			},
+			multiple: false
+		} );
 
-		window.send_to_editor = function( html ) {
-
-			var imgurl = jQuery( 'img', html ).attr( 'src' );
-
+		customUploader.on( 'select', function() {
+			var imgurl = customUploader.state().get( 'selection' ).first().attributes.url;
 			inputImage.val( imgurl ).trigger( 'change' );
 			inputAvatar.attr( 'src', imgurl );
-
-			window.tb_remove();
-		};
-
-		window.tb_show( '', 'media-upload.php?type=image&TB_iframe=true' );
-		return false;
+		});
+		customUploader.open();
 	});
 
 	// Delete image
-	jQuery( '.delete_image_url' ).click( function() {
+	jQuery( '.tm-categories-tiles-form-widget .upload-image .delete-image-url' ).click( function() {
 		var _this = jQuery( this );
 		var inputImage = _this.parents( '.category-area' ).find( '.custom-image-url' );
-		var inputAvatar = _this.parents( '.category-area' ).find( '.avatar img' );
+		var inputAvatar = _this.parents( '.category-area' ).find( '.upload-image img' );
 		var defaultAvatar = inputAvatar.attr( 'default_image' );
 		inputAvatar.attr( 'src', defaultAvatar );
 		inputImage.val( '' ).trigger( 'change' );
+		return false;
+	});
+
+	// Delete category
+	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function( e ) {
+		e.preventDefault();
+		var _this = jQuery( this );
+		var category = _this.parents( '.category-area' );
+		category.remove();
+		return false;
+	});
+
+	// Add category
+	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
+		e.preventDefault();
+		var _this = jQuery( this );
+		var categories = _this.parents('.tm-categories-tiles-form-widget').find( '.categories' );
+		var categoriesCount = parseInt( categories.attr( 'count' ) ) + 1;
+		var category = _this.parents('.tm-categories-tiles-form-widget').find( '.category-area' ).last();
+		var categoryNew = category.clone();
+		category.after( categoryNew );
+		categories.attr( 'count', categoriesCount );
+		categoryNew.find( 'h3 span' ).html( categoriesCount );
+		reInitWidget();
+		jQuery( document ).trigger('widget-change');
+		return false;
 	});
 }

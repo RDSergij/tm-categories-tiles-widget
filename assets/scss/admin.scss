@@ -2,7 +2,6 @@
 * @section Widget form
 */
 .tm-categories-tiles-form-widget {
-	
 	clear: both;
 	width: 100%;
 	margin-bottom: 10px;
@@ -17,19 +16,26 @@
 		}
 	}
 
-	.sort-is {
-		display: none;
-	}
-
 	.category-area {
 		border: #dfdfdf dashed 1px;
 		padding: 5px;
 		margin-bottom: 5px;
 		background-color: white;
+		position: relative;
 	}
 
-	.upload_image_button {
-		background-color: #0073aa;
+	.delete-category {
+		cursor: pointer;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		color: red;
+	}
+
+	.add-category {
+		cursor: pointer;
+		float: right;
+		color: green;
 	}
 
 	.button-image {
@@ -39,14 +45,21 @@
 		color: #FFF;
 	}
 
-	.delete_image_url {
-		background-color: #d54e21;
+	.delete-image-url {
+		cursor: pointer;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		color: red;
 	}
 
-	.avatar {
-		text-align: center;
+	.upload-image {
+		position: relative;
+		cursor: pointer;
+		margin: 0 auto;
+		width: 128px;
 		img {
-			width: 128px;
+			width: 100%;
 		}
 	}
 }

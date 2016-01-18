@@ -60,7 +60,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			);
 			// Set default settings
 			$this->instance_default = array(
-				'title'			=> __( 'About me', PHOTOLAB_BASE_TM_ALIAS ),
+				'title'			=> __( 'Tiles', PHOTOLAB_BASE_TM_ALIAS ),
 				'theme'			=> 0,
 				'show_count'	=> 'false',
 				'sort_is'		=> '1',
@@ -121,6 +121,8 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 				$$key = ! empty( $instance[ $key ] ) ? $instance[ $key ] : $value;
 			}
 
+			wp_enqueue_media();
+
 			// Ui cherri api
 			wp_register_script( 'tm-categories-tiles-script-api', plugins_url( 'assets/js/cherry-api.js', __FILE__ ), array( 'jquery' ) );
 			wp_localize_script( 'tm-categories-tiles-script-api', 'cherry_ajax', wp_create_nonce( 'cherry_ajax_nonce' ) );
@@ -138,6 +140,8 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			// Custom styles
 			wp_register_style( 'tm-categories-tiles-admin', plugins_url( 'assets/css/admin.min.css', __FILE__ ) );
 			wp_enqueue_style( 'tm-categories-tiles-admin' );
+			
+			wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 
 			// Custom script
 			wp_register_script( 'tm-categories-tiles-admin', plugins_url( 'assets/js/', __FILE__ ) . 'admin.min.js', array( 'jquery' ) );
@@ -147,57 +151,41 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			wp_enqueue_style( 'thickbox' );
 
 			// include ui-elements
-			require_once __DIR__ . '/admin/lib/ui-elements/ui-text/ui-text.php';
-			require_once __DIR__ . '/admin/lib/ui-elements/ui-select/ui-select.php';
-			require_once __DIR__ . '/admin/lib/ui-elements/ui-switcher/ui-switcher.php';
+			require_once __DIR__ . '/admin/lib/fox-ui-elements/ui-switcher.php';
+			require_once __DIR__ . '/admin/lib/fox-ui-elements/ui-input.php';
+			require_once __DIR__ . '/admin/lib/fox-ui-elements/ui-select.php';
 
-			$title_field = new UI_Text(
-							array(
-									'id'            => $this->get_field_id( 'title' ),
-									'type'          => 'text',
-									'class'			=> 'title',
-									'name'          => $this->get_field_name( 'title' ),
-									'placeholder'   => __( 'New title', PHOTOLAB_BASE_TM_ALIAS ),
-									'value'         => $title,
-									'label'         => __( 'Title widget', PHOTOLAB_BASE_TM_ALIAS ),
-							)
-					);
-			$title_html = $title_field->render();
+			$title_field = new ui_input_fox(
+					array(
+						'id'			=> $this->get_field_id( 'title' ),
+						'class'			=> 'title',
+						'name'			=> $this->get_field_name( 'title' ),
+						'value'			=> $title,
+						'placeholder'	=> __( 'New title', PHOTOLAB_BASE_TM_ALIAS ),
+					)
+			);
+			$title_html = $title_field->output();
 
-			$sort_is_field = new UI_Text(
-							array(
-									'id'            => $this->get_field_id( 'sort_is' ),
-									'class'			=> 'sort-is',
-									'type'          => 'text',
-									'name'          => $this->get_field_name( 'sort_is' ),
-									'value'         => $sort_is,
-							)
-					);
-			$sort_is_html = $sort_is_field->render();
-
-			$theme_field = new UI_Select(
+			$theme_field = new ui_select_fox(
 						array(
 							'id'				=> $this->get_field_id( 'theme' ),
 							'name'				=> $this->get_field_name( 'theme' ),
-							'value'				=> $theme,
+							'default'			=> $theme,
 							'options'			=> $this->themes,
 						)
 					);
-			$theme_html = $theme_field->render();
+			$theme_html = $theme_field->output();
 
-			$show_count_field = new UI_Switcher2(
-						array(
-							'value'				=> $show_count,
-							'id'				=> $this->get_field_name( 'show_count' ),
-							'name'				=> $this->get_field_name( 'show_count' ),
-							'style'				=> 'small',
-							'toggle'			=> array(
-												'true_toggle'	=> 'On',
-												'false_toggle'	=> 'Off',
-										),
-						)
-					);
-			$show_count_html = $show_count_field->render();
+			$switcher = new ui_switcher_fox(
+					array(
+						'id'        => $this->get_field_id( 'show_count' ),
+						'class'     => '',
+						'name'      => $this->get_field_name( 'show_count' ),
+						'values'    => array( 'true' => 'ON', 'false'=> 'OFF' ),
+						'default'    => $show_count,
+					)
+			);
+			$show_count_html = $switcher->output();
 
 			$categories_list = get_categories( array( 'hide_empty' => 0 ) );
 			$categories_array = array( '1' => 'default' );
@@ -208,58 +196,28 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			// Universal
 			$default_image = plugins_url( 'images/', __FILE__ ) . 'default-image.jpg';
 
-			$upload_field = new UI_Text(
-							array(
-									'id'			=> $this->get_field_id( 'upload_image_button' ),
-									'class'			=> 'upload_image_button button-image',
-									'type'			=> 'button',
-									'name'			=> $this->get_field_name( 'upload_image_button' ),
-									'value'			=> __( 'Upload image', PHOTOLAB_BASE_TM_ALIAS ),
-							)
-					);
-			$upload_html = $upload_field->render();
-
-			$delete_field = new UI_Text(
-							array(
-									'id'			=> $this->get_field_id( 'delete_image' ),
-									'class'			=> 'delete_image_url button-image',
-									'type'			=> 'button',
-									'name'			=> $this->get_field_name( 'delete_image' ),
-									'value'			=> __( 'Delete image', PHOTOLAB_BASE_TM_ALIAS ),
-							)
-					);
-			$delete_image_html = $delete_field->render();
-
-			$displayed_images = array();
-			for ( $i = 0; $i < 6; $i++ ) {
-				$displayed_images[ $i ] = $categories[ $i ]['image'];
-				if ( empty( $categories[ $i ]['category'] ) ) {
-					$categories[ $i ]['category'] = 0;
-				}
-				if ( empty( $categories[ $i ]['image'] ) ) {
-					$categories[ $i ]['image'] = '';
-				}
-
-				$category_field = new UI_Select(
-							array(
-								'id'				=> $this->get_field_id( 'category_' . $i ),
-								'name'				=> $this->get_field_name( 'category[]' ),
-								'value'				=> $categories[ $i ]['category'],
-								'options'			=> $categories_array,
-							)
-						);
-				$category_{$i . '_html'} = $category_field->render();
-
-				$image_field = new UI_Text(
+			$tiles_items = [];
+			if ( is_array( $categories ) && count( $categories ) >0 ) {
+				foreach( $categories as $key => $category_item ) {
+					$category_field = new ui_select_fox(
 								array(
-										'id'			=> $this->get_field_id( 'image_' . $i ),
-										'class'			=> 'custom-image-url',
-										'type'			=> 'hidden',
-										'name'			=> $this->get_field_name( 'image[]' ),
-										'value'			=> $categories[ $i ]['image'],
+									'id'				=> $this->get_field_id( 'category_' . $key ),
+									'name'				=> $this->get_field_name( 'category[]' ),
+									'default'			=> $category_item['category'],
+									'options'			=> $categories_array,
 								)
-						);
-				$image_{$i . '_html'} = $image_field->render();
+							);
+					$image_field = new ui_input_fox(
+								array(
+									'id'			=> $this->get_field_id( 'image_' . $key ),
+									'class'			=> 'custom-image-url',
+									'type'			=> 'hidden',
+									'name'			=> $this->get_field_name( 'image[]' ),
+									'value'			=> $categories[ $key ]['image'],
+								)
+							);
+					$tiles_items[] = [ 'src' => $categories[ $key ]['image'], 'image' => $image_field->output(), 'category' => $category_field->output() ];
+				}
 			}
 
 			// show view
