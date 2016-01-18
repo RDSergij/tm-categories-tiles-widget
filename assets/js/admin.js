@@ -63,7 +63,7 @@ function initWidget() {
 	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function( e ) {
 		var _this = jQuery( this );
 		var category = _this.parents( '.category-area' );
-		category.find('input').trigger( 'change' );
+		category.find( 'input' ).trigger( 'change' );
 		category.remove();
 		reInitWidget();
 	});
@@ -78,7 +78,7 @@ function initWidget() {
 		category.after( categoryNew );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
-		categoryNew.find('input').trigger( 'change' );
+		categoryNew.find( 'input' ).trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
 		reInitWidget();
 	});
