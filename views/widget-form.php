@@ -28,8 +28,8 @@ if ( ! defined( 'WPINC' ) ) {
 	</div>
 
 	<div class="categories" count="<?php echo count( $tiles_items ) ?>">
-		<?php if ( is_array( $tiles_items ) && count( $tiles_items ) >0 ) : ?>
-		<?php foreach( $tiles_items as $key => $tile_item) : ?>
+		<?php if ( is_array( $tiles_items ) && count( $tiles_items ) > 0 ) : ?>
+		<?php foreach ( $tiles_items as $key => $tile_item ) : ?>
 		<div class="category-area">
 			<i class="fa fa-times delete-category"></i>
 			<h3><?php echo __( 'Category', PHOTOLAB_BASE_TM_ALIAS ) ?> <span><?php echo $key + 1 ?></span></h3>

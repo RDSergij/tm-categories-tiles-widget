@@ -155,7 +155,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			require_once __DIR__ . '/admin/lib/fox-ui-elements/ui-input.php';
 			require_once __DIR__ . '/admin/lib/fox-ui-elements/ui-select.php';
 
-			$title_field = new ui_input_fox(
+			$title_field = new UI_Input_Fox(
 					array(
 						'id'			=> $this->get_field_id( 'title' ),
 						'class'			=> 'title',
@@ -166,7 +166,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			);
 			$title_html = $title_field->output();
 
-			$theme_field = new ui_select_fox(
+			$theme_field = new UI_Select_Fox(
 						array(
 							'id'				=> $this->get_field_id( 'theme' ),
 							'name'				=> $this->get_field_name( 'theme' ),
@@ -176,7 +176,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 					);
 			$theme_html = $theme_field->output();
 
-			$switcher = new ui_switcher_fox(
+			$switcher = new UI_Switcher_Fox(
 					array(
 						'id'        => $this->get_field_id( 'show_count' ),
 						'class'     => '',
@@ -199,7 +199,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$tiles_items = [];
 			if ( is_array( $categories ) && count( $categories ) >0 ) {
 				foreach( $categories as $key => $category_item ) {
-					$category_field = new ui_select_fox(
+					$category_field = new UI_Select_Fox(
 								array(
 									'id'				=> $this->get_field_id( 'category_' . $key ),
 									'name'				=> $this->get_field_name( 'category[]' ),
@@ -207,7 +207,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 									'options'			=> $categories_array,
 								)
 							);
-					$image_field = new ui_input_fox(
+					$image_field = new UI_Input_Fox(
 								array(
 									'id'			=> $this->get_field_id( 'image_' . $key ),
 									'class'			=> 'custom-image-url',

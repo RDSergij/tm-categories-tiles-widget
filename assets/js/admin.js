@@ -1,7 +1,6 @@
 /**
  * Events list
  */
-//jQuery( document ).ready( initWidget );
 jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
 
 /**
@@ -24,12 +23,11 @@ function reInitWidget() {
 function initWidget() {
 
 	jQuery( '.tm-categories-tiles-form-widget select, .tm-categories-tiles-form-widget input[type=text]' ).change( function() {
-		jQuery( document ).trigger('widget-change');
+		jQuery( document ).trigger( 'widget-change' );
 	});
 
 	// Upload image
 	jQuery( '.tm-categories-tiles-form-widget div.upload-image img' ).click( function( e ) {
-		e.preventDefault();
 		var _this = jQuery( this );
 		var inputImage = _this.parents( '.category-area' ).find( '.custom-image-url' );
 		var inputAvatar = _this.parents( '.category-area' ).find( '.upload-image img' );
@@ -47,6 +45,7 @@ function initWidget() {
 			inputAvatar.attr( 'src', imgurl );
 		});
 		customUploader.open();
+		e.preventDefault();
 	});
 
 	// Delete image
@@ -73,7 +72,7 @@ function initWidget() {
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
 		e.preventDefault();
 		var _this = jQuery( this );
-		var categories = _this.parents('.tm-categories-tiles-form-widget').find( '.categories' );
+		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
 		var categoriesCount = parseInt( categories.attr( 'count' ) ) + 1;
 		var category = _this.parents('.tm-categories-tiles-form-widget').find( '.category-area' ).last();
 		var categoryNew = category.clone();
@@ -81,7 +80,7 @@ function initWidget() {
 		categories.attr( 'count', categoriesCount );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		reInitWidget();
-		jQuery( document ).trigger('widget-change');
+		jQuery( document ).trigger( 'widget-change' );
 		return false;
 	});
 }
