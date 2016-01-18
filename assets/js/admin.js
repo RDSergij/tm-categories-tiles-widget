@@ -63,24 +63,23 @@ function initWidget() {
 	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function( e ) {
 		var _this = jQuery( this );
 		var category = _this.parents( '.category-area' );
+		category.find('input').trigger( 'change' );
 		category.remove();
-		e.preventDefault();
-		return false;
+		reInitWidget();
 	});
 
 	// Add category
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
-		var categoriesCount = parseInt( categories.attr( 'count' ), radix ) + 1;
+		var categoriesCount = parseInt( categories.attr( 'count' ), 10 ) + 1;
 		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-area' ).last();
 		var categoryNew = category.clone();
 		category.after( categoryNew );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
-		reInitWidget();
+		categoryNew.find('input').trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
-		e.preventDefault();
-		return false;
+		reInitWidget();
 	});
 }
