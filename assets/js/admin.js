@@ -72,7 +72,7 @@ function initWidget() {
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).click( function( e ) {
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
-		var categoriesCount = parseInt( categories.attr( 'count' ) ) + 1;
+		var categoriesCount = parseInt( categories.attr( 'count' ), radix ) + 1;
 		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-area' ).last();
 		var categoryNew = category.clone();
 		category.after( categoryNew );
