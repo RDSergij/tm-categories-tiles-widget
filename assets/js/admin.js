@@ -1,26 +1,26 @@
 /**
  * Events list
  */
-jQuery( document ).on( 'widget-updated widget-added ready', initWidget );
+jQuery( document ).on( 'widget-updated widget-added ready', initWidgetCategoriesTiles );
 
 /**
  * ReInit widget
  * @returns {undefined}
  */
-function reInitWidget() {
+function reInitWidgetCategoriesTiles() {
 	jQuery( '.tm-categories-tiles-form-widget select, .tm-categories-tiles-form-widget input[type=text]' ).off( 'change' );
 	jQuery( '.tm-categories-tiles-form-widget div.upload-image img' ).off( 'click' );
 	jQuery( '.tm-categories-tiles-form-widget .upload-image .delete-image-url' ).off( 'click' );
 	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).off( 'click' );
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).off( 'click' );
-	initWidget();
+	initWidgetCategoriesTiles();
 }
 /**
  * Initialization widget js
  *
  * @returns {undefined}
  */
-function initWidget() {
+function initWidgetCategoriesTiles() {
 
 	jQuery( '.tm-categories-tiles-form-widget select, .tm-categories-tiles-form-widget input[type=text]' ).change( function() {
 		jQuery( document ).trigger( 'widget-change' );
@@ -65,7 +65,7 @@ function initWidget() {
 		var category = _this.parents( '.category-area' );
 		category.find( 'input' ).trigger( 'change' );
 		category.remove();
-		reInitWidget();
+		reInitWidgetCategoriesTiles();
 	});
 
 	// Add category
@@ -80,6 +80,6 @@ function initWidget() {
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		categoryNew.find( 'input' ).trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
-		reInitWidget();
+		reInitWidgetCategoriesTiles();
 	});
 }
