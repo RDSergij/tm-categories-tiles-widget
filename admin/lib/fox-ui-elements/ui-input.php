@@ -49,8 +49,6 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 
 		/**
 		 * Init base settings
-		 *
-		 * @param type $attr.
 		 */
 		public function __construct( $attr = null ) {
 			if ( empty( $attr ) || ! is_array( $attr ) ) {

@@ -73,7 +73,7 @@ function initWidget() {
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
 		var categoriesCount = parseInt( categories.attr( 'count' ) ) + 1;
-		var category = _this.parents('.tm-categories-tiles-form-widget').find( '.category-area' ).last();
+		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-area' ).last();
 		var categoryNew = category.clone();
 		category.after( categoryNew );
 		categories.attr( 'count', categoriesCount );

@@ -130,7 +130,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			// Custom styles
 			wp_register_style( 'tm-categories-tiles-admin', plugins_url( 'assets/css/admin.min.css', __FILE__ ) );
 			wp_enqueue_style( 'tm-categories-tiles-admin' );
-			
+
 			wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 
 			// Custom script
@@ -171,7 +171,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 						'id'        => $this->get_field_id( 'show_count' ),
 						'class'     => '',
 						'name'      => $this->get_field_name( 'show_count' ),
-						'values'    => array( 'true' => 'ON', 'false'=> 'OFF' ),
+						'values'    => array( 'true' => 'ON', 'false' => 'OFF' ),
 						'default'    => $show_count,
 					)
 			);
@@ -187,8 +187,8 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$default_image = plugins_url( 'images/', __FILE__ ) . 'default-image.jpg';
 
 			$tiles_items = [];
-			if ( is_array( $categories ) && count( $categories ) >0 ) {
-				foreach( $categories as $key => $category_item ) {
+			if ( is_array( $categories ) && count( $categories ) > 0 ) {
+				foreach ( $categories as $key => $category_item ) {
 					$category_field = new UI_Select_Fox(
 								array(
 									'id'				=> $this->get_field_id( 'category_' . $key ),

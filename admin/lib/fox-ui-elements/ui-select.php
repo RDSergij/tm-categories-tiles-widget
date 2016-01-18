@@ -36,7 +36,7 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 		 * @var type array
 		 */
 		private $required_settings = array(
-			'class'     => 'select-fox'
+			'class'     => 'select-fox',
 		);
 
 		/**
@@ -48,20 +48,18 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 
 		/**
 		 * Init base settings
-		 *
-		 * @param type $attr
 		 */
 		public function __construct( $attr = null ) {
 			if ( empty( $attr ) || ! is_array( $attr ) ) {
 				$attr = $this->default_settings;
 			} else {
-				foreach( $this->default_settings as $key => $value ) {
+				foreach ( $this->default_settings as $key => $value ) {
 					if ( empty( $attr[ $key ] ) ) {
 						$attr[ $key ] = $this->default_settings[ $key ];
 					}
 				}
 			}
-			
+
 			$this->settings = $attr;
 		}
 
@@ -69,11 +67,9 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 		 * Add styles
 		 */
 		private function assets() {
-			$url = plugins_url( 'fox-ui-elements/assets/css/select.min.css', dirname(__FILE__) );
+			$url = plugins_url( 'fox-ui-elements/assets/css/select.min.css', dirname( __FILE__ ) );
 			wp_enqueue_style( 'select-fox', $url, array(), '0.1.0', 'all' );
 		}
-
-		
 
 		/**
 		 * Render html
@@ -96,7 +92,7 @@ if ( ! class_exists( 'UI_Select_Fox' ) ) {
 				unset( $this->settings['default'] );
 			}
 			foreach ( $this->settings as $key => $value ) {
-				$attributes.= ' ' . $key . '="' . $value . '"';
+				$attributes .= ' ' . $key . '="' . $value . '"';
 			}
 
 			ob_start();
