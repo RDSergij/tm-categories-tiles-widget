@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 	<h3><?php echo $title ?></h3>
 	<div class="grid-wrap">
 		<?php foreach ( $categories as $index => $category ) : ?>
-		<?php if ( 5 < $index ) break; ?>
+		<?php if ( 5 < $index ) continue; ?>
 		<?php if ( $index ) : ?>
 		<?php $size = 'small' ?>
 		<?php else : ?>
