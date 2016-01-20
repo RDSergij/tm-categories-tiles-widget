@@ -102,6 +102,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 				$category_data = get_category( $category_item['category'] );
 				$category_item['count'] = $category_data->category_count;
 				$category_item['name'] = $category_data->name;
+				$category_item['url'] = get_category_link( $category_data->term_id );
 			}
 
 			$view = __DIR__ . '/views/themes/' . $this->themes[ $theme ] . '.php';
