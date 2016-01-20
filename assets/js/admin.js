@@ -75,7 +75,14 @@ function initWidgetCategoriesTiles() {
 		var categoriesCount = parseInt( categories.attr( 'count' ), 10 ) + 1;
 		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-area' ).last();
 		var categoryNew = category.clone();
+		var inputImage = categoryNew.find( '.custom-image-url' );
+		var inputAvatar = categoryNew.find( '.upload-image img' );
+		var defaultAvatar = inputAvatar.attr( 'default_image' );
+		var selectCategory = categoryNew.find( 'select' );
 		category.after( categoryNew );
+		inputAvatar.attr( 'src', defaultAvatar );
+		selectCategory.val( '1 ');
+		inputImage.val( '' );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		categoryNew.find( 'input' ).trigger( 'change' );
