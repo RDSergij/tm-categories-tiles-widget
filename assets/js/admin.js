@@ -81,7 +81,7 @@ function initWidgetCategoriesTiles() {
 		var selectCategory = categoryNew.find( 'select' );
 		category.after( categoryNew );
 		inputAvatar.attr( 'src', defaultAvatar );
-		selectCategory.val( '1 ');
+		selectCategory.val( '1' );
 		inputImage.val( '' );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );

@@ -5,7 +5,7 @@
  * Author: Osadchyi Serhii
  * Author URI: https://github.com/RDSergij
  *
- * @package ui_input_fox
+ * @package ui_switcher_fox
  *
  * @since 0.1.0
  */
