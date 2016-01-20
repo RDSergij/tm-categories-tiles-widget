@@ -14,23 +14,20 @@ if ( ! defined( 'WPINC' ) ) {
 <div class="tm-line-3-widget">
 	<h3><?php echo $title ?></h3>
 	<div class="grid-wrap">
-		<div class="cell-small" style="background: url(<?php echo $categories[0]['image'] ?>) no-repeat;">
-			<div class="title"><?php echo $categories[0]['name'] ?></div>
-			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[0]['count'] ); ?></div>
-			<?php endif; ?>
-		</div>
-		<div class="cell-small" style="background: url(<?php echo $categories[1]['image'] ?>) no-repeat;">
-			<div class="title"><?php echo $categories[1]['name'] ?></div>
-			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[1]['count'] ); ?></div>
-			<?php endif; ?>
-		</div>
-		<div class="cell-small" style="background: url(<?php echo $categories[2]['image'] ?>) no-repeat;">
-			<div class="title"><?php echo $categories[2]['name'] ?></div>
-			<?php if ( 'true' == $show_count ) : ?>
-			<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $categories[2]['count'] ); ?></div>
-			<?php endif; ?>
-		</div>
+		<?php foreach ( $categories as $index => $category ) : ?>
+		<?php if ( 3 < $index ) break; ?>
+		<a href="<?php echo $category['url'] ?>">
+			<div class="cell-small" 
+				<?php if ( ! empty( $category['image'] ) ) : ?>
+				style="background: url(<?php echo $category['image'] ?>) no-repeat;"
+				<?php endif; ?>
+				>
+				<div class="title"><?php echo $category['name'] ?></div>
+				<?php if ( 'true' == $show_count ) : ?>
+				<div class="count"><?php printf( __( '%d posts', PHOTOLAB_BASE_TM_ALIAS ), $category['count'] ); ?></div>
+				<?php endif; ?>
+			</div>
+		</a>
+		<?php endforeach; ?>
 	</div>
 </div>
