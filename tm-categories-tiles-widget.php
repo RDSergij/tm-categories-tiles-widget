@@ -64,7 +64,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 				'theme'			=> 0,
 				'show_count'	=> 'false',
 				'sort_is'		=> '1',
-				'categories'	=> array( ),
+				'categories'	=> array(),
 			);
 
 			$this->themes = array( 'grid-1-2', 'grid-1-5', 'line-3' );
@@ -221,7 +221,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 							);
 			$image_field = new UI_Input_Fox(
 								array(
-									'id'			=> $this->get_field_id( 'image_new'),
+									'id'			=> $this->get_field_id( 'image_new' ,
 									'class'			=> 'custom-image-url',
 									'type'			=> 'hidden',
 									'name'			=> $this->get_field_name( 'image_new' ),

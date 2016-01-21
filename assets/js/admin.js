@@ -9,7 +9,7 @@ jQuery( document ).on( 'widget-updated widget-added ready', initWidgetCategories
  */
 function reNumberCategoriesTiles( categories ) {
 	categories.find( '.category-area' ).each( function( index, category ) {
-		jQuery(this).find( 'h3 span' ).html( index + 1 );
+		jQuery( this ).find( 'h3 span' ).html( index + 1 );
 	});
 }
 
@@ -100,8 +100,8 @@ function initWidgetCategoriesTiles() {
 		inputImage.val( '' );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.toggleClass( 'category-area category-new' );
-		categoryNew.find('input[name=image_new]').attr('name', 'image[]');
-		categoryNew.find('input[name=category_new]').attr('name', 'category[]');
+		categoryNew.find( 'input[name=image_new]' ).attr( 'name', 'image[]' );
+		categoryNew.find( 'input[name=category_new]' ).attr( 'name', 'category[]' );
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		categoryNew.find( 'input' ).trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
