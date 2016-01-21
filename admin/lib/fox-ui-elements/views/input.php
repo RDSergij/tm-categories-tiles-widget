@@ -15,14 +15,14 @@
 <?php endif; ?>
 <input <?php echo $attributes ?>
 	<?php if ( ! empty( $datalist ) ) : ?>
-	datalist="<?php echo $datalist_id ?>"
+	list="<?php echo $datalist_id ?>"
 	<?php endif; ?>
 >
 
 <?php if ( ! empty( $datalist ) ) : ?>
 <datalist id="<?php echo $datalist_id ?>">
 	<?php foreach ( $datalist as $dataitem ) : ?>
-	<option value="<?php echo $dataitem ?>">
+	<option><?php echo $dataitem ?></option>
 	<?php endforeach; ?>
 </datalist>
 <?php endif; ?>
