@@ -214,7 +214,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$category_field = new UI_Select_Fox(
 								array(
 									'id'				=> $this->get_field_id( 'category_new' ),
-									'name'				=> $this->get_field_name( 'category_new' ),
+									'name'				=> $this->get_field_name( 'category_new[]' ),
 									'default'			=> 0,
 									'options'			=> $categories_array,
 								)
@@ -224,7 +224,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 									'id'			=> $this->get_field_id( 'image_new' ),
 									'class'			=> 'custom-image-url',
 									'type'			=> 'hidden',
-									'name'			=> $this->get_field_name( 'image_new' ),
+									'name'			=> $this->get_field_name( 'image_new[]' ),
 									'value'			=> '',
 								)
 							);

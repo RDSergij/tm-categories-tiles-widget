@@ -100,8 +100,20 @@ function initWidgetCategoriesTiles() {
 		inputImage.val( '' );
 		categories.attr( 'count', categoriesCount );
 		categoryNew.toggleClass( 'category-area category-new' );
-		categoryNew.find( 'input[name=image_new]' ).attr( 'name', 'image[]' );
-		categoryNew.find( 'input[name=category_new]' ).attr( 'name', 'category[]' );
+		categoryNew.find( 'input' ).each( function() {
+			var _inputItem = jQuery( this );
+			var name = _inputItem.attr( 'name' );
+			name = name.replace( '_new', '' );
+			_inputItem.attr( 'name', name );
+		});
+
+		categoryNew.find( 'select' ).each( function() {
+			var _inputItem = jQuery( this );
+			var name = _inputItem.attr( 'name' );
+			name = name.replace( '_new', '' );
+			_inputItem.attr( 'name', name );
+		});
+
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		categoryNew.find( 'input' ).trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
