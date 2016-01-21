@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 	</p>
 
 	<div class="show-count">
-		<label><?php _e( 'Show posts', PHOTOLAB_BASE_TM_ALIAS ) ?></label>
+		<label><?php _e( 'Show posts count', PHOTOLAB_BASE_TM_ALIAS ) ?></label>
 		<?php echo $show_count_html ?>
 	</div>
 
@@ -54,6 +54,23 @@ if ( ! defined( 'WPINC' ) ) {
 		</div>
 		<?php endforeach; ?>
 		<?php endif; ?>
+		<div class="category-new">
+			<i class="fa fa-times delete-category"></i>
+			<h3><?php echo __( 'Category', PHOTOLAB_BASE_TM_ALIAS ) ?> <span></span></h3>
+			<p>
+				<?php echo $tile_new['category'] ?>
+			</p>
+
+			<p>
+				<label><?php _e( 'Category image', PHOTOLAB_BASE_TM_ALIAS ) ?></label><br/>
+				<?php echo $tile_new['image'] ?>
+			</p>
+
+			<div class="upload-image">
+				<i class="fa fa-times delete-image-url"></i>
+				<img default_image="<?php echo $default_image ?>" src="<?php echo $default_image ?>">
+			</div>
+		</div>
 		<i class="add-category fa fa-plus-square"> add category</i>
 	</div>
 

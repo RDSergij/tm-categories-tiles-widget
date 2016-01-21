@@ -22,45 +22,50 @@
 		margin-bottom: 5px;
 		background-color: white;
 		position: relative;
+
+		.delete-category {
+			cursor: pointer;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: red;
+		}
+
+		.delete-image-url {
+			cursor: pointer;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: red;
+		}
+
+		.upload-image {
+			position: relative;
+			cursor: pointer;
+			margin: 0 auto;
+			width: 128px;
+			img {
+				width: 100%;
+			}
+
+			.delete-image-url {
+				cursor: pointer;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				color: red;
+			}
+		}
 	}
 
-	.delete-category {
-		cursor: pointer;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		color: red;
+	.category-new {
+		display: none;
 	}
 
 	.add-category {
 		cursor: pointer;
 		float: right;
 		color: green;
-	}
-
-	.button-image {
-		width: 48%;
-		display: inline;
-		cursor: pointer;
-		color: #FFF;
-	}
-
-	.delete-image-url {
-		cursor: pointer;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		color: red;
-	}
-
-	.upload-image {
-		position: relative;
-		cursor: pointer;
-		margin: 0 auto;
-		width: 128px;
-		img {
-			width: 100%;
-		}
 	}
 }
 

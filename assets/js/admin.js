@@ -4,6 +4,16 @@
 jQuery( document ).on( 'widget-updated widget-added ready', initWidgetCategoriesTiles );
 
 /**
+ * Renumber list
+ * @returns {undefined}
+ */
+function reNumberCategoriesTiles( categories ) {
+	categories.find( '.category-area' ).each( function( index, category ) {
+		jQuery(this).find( 'h3 span' ).html( index + 1 );
+	});
+}
+
+/**
  * ReInit widget
  * @returns {undefined}
  */
@@ -15,6 +25,7 @@ function reInitWidgetCategoriesTiles() {
 	jQuery( '.tm-categories-tiles-form-widget .categories .add-category' ).off( 'click' );
 	initWidgetCategoriesTiles();
 }
+
 /**
  * Initialization widget js
  *
@@ -63,8 +74,12 @@ function initWidgetCategoriesTiles() {
 	jQuery( '.tm-categories-tiles-form-widget .category-area .delete-category' ).click( function() {
 		var _this = jQuery( this );
 		var category = _this.parents( '.category-area' );
+		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
+		var categoriesCount = parseInt( categories.attr( 'count' ), 10 ) - 1;
+		categories.attr( 'count', categoriesCount );
 		category.find( 'input' ).trigger( 'change' );
 		category.remove();
+		reNumberCategoriesTiles( categories );
 		reInitWidgetCategoriesTiles();
 	});
 
@@ -73,20 +88,24 @@ function initWidgetCategoriesTiles() {
 		var _this = jQuery( this );
 		var categories = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.categories' );
 		var categoriesCount = parseInt( categories.attr( 'count' ), 10 ) + 1;
-		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-area' ).last();
+		var category = _this.parents( '.tm-categories-tiles-form-widget' ).find( '.category-new' );
 		var categoryNew = category.clone();
 		var inputImage = categoryNew.find( '.custom-image-url' );
 		var inputAvatar = categoryNew.find( '.upload-image img' );
 		var defaultAvatar = inputAvatar.attr( 'default_image' );
 		var selectCategory = categoryNew.find( 'select' );
-		category.after( categoryNew );
+		category.before( categoryNew );
 		inputAvatar.attr( 'src', defaultAvatar );
 		selectCategory.val( '1' );
 		inputImage.val( '' );
 		categories.attr( 'count', categoriesCount );
+		categoryNew.toggleClass( 'category-area category-new' );
+		categoryNew.find('input[name=image_new]').attr('name', 'image[]');
+		categoryNew.find('input[name=category_new]').attr('name', 'category[]');
 		categoryNew.find( 'h3 span' ).html( categoriesCount );
 		categoryNew.find( 'input' ).trigger( 'change' );
 		jQuery( document ).trigger( 'widget-change' );
+		reNumberCategoriesTiles( categories );
 		reInitWidgetCategoriesTiles();
 	});
 }

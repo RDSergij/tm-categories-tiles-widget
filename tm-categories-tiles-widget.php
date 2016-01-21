@@ -64,7 +64,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 				'theme'			=> 0,
 				'show_count'	=> 'false',
 				'sort_is'		=> '1',
-				'categories'	=> array( 0 => array( 'category' => 1, 'image' => '' ) ),
+				'categories'	=> array( ),
 			);
 
 			$this->themes = array( 'grid-1-2', 'grid-1-5', 'line-3' );
@@ -170,7 +170,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$switcher = new UI_Switcher_Fox(
 					array(
 						'id'        => $this->get_field_id( 'show_count' ),
-						'class'     => '',
+						'class'     => 'pull-right',
 						'name'      => $this->get_field_name( 'show_count' ),
 						'values'    => array( 'true' => 'ON', 'false' => 'OFF' ),
 						'default'    => $show_count,
@@ -187,7 +187,7 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			// Universal
 			$default_image = plugins_url( 'images/', __FILE__ ) . 'default-image.jpg';
 
-			$tiles_items = [];
+			$tiles_items = array();
 			if ( is_array( $categories ) && count( $categories ) > 0 ) {
 				foreach ( $categories as $key => $category_item ) {
 					$category_field = new UI_Select_Fox(
@@ -207,10 +207,28 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 									'value'			=> $categories[ $key ]['image'],
 								)
 							);
-					$tiles_items[] = [ 'src' => $categories[ $key ]['image'], 'image' => $image_field->output(), 'category' => $category_field->output() ];
+					$tiles_items[] = array( 'src' => $categories[ $key ]['image'], 'image' => $image_field->output(), 'category' => $category_field->output() );
 				}
 			}
 
+			$category_field = new UI_Select_Fox(
+								array(
+									'id'				=> $this->get_field_id( 'category_new' ),
+									'name'				=> $this->get_field_name( 'category_new' ),
+									'default'			=> 0,
+									'options'			=> $categories_array,
+								)
+							);
+			$image_field = new UI_Input_Fox(
+								array(
+									'id'			=> $this->get_field_id( 'image_new'),
+									'class'			=> 'custom-image-url',
+									'type'			=> 'hidden',
+									'name'			=> $this->get_field_name( 'image_new' ),
+									'value'			=> '',
+								)
+							);
+			$tile_new = array( 'image' => $image_field->output(), 'category' => $category_field->output() );
 			// show view
 			require 'views/widget-form.php';
 		}
@@ -230,7 +248,9 @@ if ( ! class_exists( 'TM_Categories_Tiles_Widget' ) ) {
 			$instance['sort_is'] = ! empty( $new_instance['sort_is'] ) ? $new_instance['sort_is'] : $this->instance_default['sort_is'];
 
 			foreach ( $new_instance['category'] as $key => $category ) {
-				$instance['categories'][] = array( 'category' => $category, 'image' => $new_instance['image'][ $key ] );
+				if ( ! empty( $category ) ) {
+					$instance['categories'][] = array( 'category' => $category, 'image' => $new_instance['image'][ $key ] );
+				}
 			}
 
 			return $instance;
