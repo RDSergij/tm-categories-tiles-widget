@@ -8,7 +8,7 @@ jQuery( document ).on( 'widget-updated widget-added ready', initWidgetCategories
  * @returns {undefined}
  */
 function reNumberCategoriesTiles( categories ) {
-	categories.find( '.category-area' ).each( function( index, category ) {
+	categories.find( '.category-area' ).each( function( index ) {
 		jQuery( this ).find( 'h3 span' ).html( index + 1 );
 	});
 }
