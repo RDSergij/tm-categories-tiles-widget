@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 	<h3><?php echo $title ?></h3>
 	<div class="grid-wrap">
 		<?php foreach ( $categories as $index => $category ) : ?>
-			<?php if ( 3 < $index ) : ?>
+			<?php if ( 3 > $index ) : ?>
 				<a href="<?php echo $category['url'] ?>">
 					<div class="cell-small" 
 						<?php if ( ! empty( $category['image'] ) ) : ?>
