@@ -33,6 +33,14 @@
 			}
 		}
 	}
+
+	&:after {
+		visibility: hidden;
+		display: block;
+		content: "";
+		clear: both;
+		height: 0;
+	}
 }
 
 /*
@@ -70,6 +78,14 @@
 			}
 		}
 	}
+
+	&:after {
+		visibility: hidden;
+		display: block;
+		content: "";
+		clear: both;
+		height: 0;
+	}
 }
 
 /*
@@ -92,5 +108,13 @@
 				font-size: 8px;
 			}
 		}
+	}
+
+	&:after {
+		visibility: hidden;
+		display: block;
+		content: "";
+		clear: both;
+		height: 0;
 	}
 }
